@@ -1,31 +1,34 @@
 import List from "../Models/List.js";
 import _store from "../store.js"
+import Item from "../Models/Item.js"
 
-//Private
-function _saveData() {
 
-}
-
-function _loadData() {
-
-}
 
 //Public
 class ListService {
-  createList() {
-    throw new Error("Method not implemented.");
+  createList(newListData) {
+    let newList = new List(newListData)
+    _store.State.lists.push(newList)
+    console.log(_store.State.lists)
+    _store.saveState()
   }
 
   deleteList(id) {
-    throw new Error("Method not implemented.");
+    let index = _store.State.lists.findIndex(list => list.id == id)
+    _store.State.lists.splice(index, 1)
+    _store.saveState()
   }
 
-  createItem() {
-    throw new Error("Method not implemented.");
+  createItem(newItemData, listId) {
+    let newItem = new Item(newItemData)
+    let item = _store.State.lists.find(list => list.id == listId)
+    item.items.push(newItem)
+    console.log(_store.State.lists)
+    _store.saveState()
   }
 
   deleteItem(id) {
-    throw new Error("Method not implemented.");
+    _store.saveState()
   }
 
   //TODO  Here is where we handle all of our business logic,

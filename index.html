@@ -12,15 +12,37 @@
 </head>
 
 <body class="container-fluid bg-dark">
-  <div class="row h-100">
-    <div class="col-12">
+  <div class="row h-100 text-white">
+    <div class="col-12 text-center">
       <h1>TaskMaster</h1>
     </div>
     <div class="col-12">
-
+      <form class="form-row" onsubmit="app.listController.createList(event)">
+        <div class="form-group m-1">
+          <input type="text" name="title" id="" class="form-control" placeholder="List name">
+        </div>
+        <div class="form-group d-flex m-1">
+          <label for="primaryColor">Primary color: </label>
+          <input type="color" name="primaryColor" value="#FFD1BD">
+        </div>
+        <div class="form-group d-flex m-1">
+          <label for="secondaryColor">Secondary color: </label>
+          <input type="color" name="secondaryColor" value="#FFFFFF">
+        </div>
+        <div class="form-group d-flex m-1">
+          <label for="textColor">Text color: </label>
+          <input type="color" name="textColor" value="#FFB0CD">
+        </div>
+        <div class="form-group d-flex m-1">
+          <label for="accentColor">Accent color: </label>
+          <input type="color" name="accentColor" value="#C2F0FC">
+        </div>
+        <button type="submit btn btn-success">Make list</button>
+      </form>
     </div>
-    <main id="lists">
-
+    <main class="col-12">
+      <div class="row" id="lists">
+      </div>
     </main>
   </div>
 
