@@ -4,20 +4,33 @@ import { generateId } from "../utils.js";
 export default class Item {
   constructor(data) {
     this.id = data.id || generateId()
-    //this.checkbox = data.checkbox || false
+    this.checkbox = data.checkbox || false
     this.itemName = data.itemName
   }
 
-  getTemplate(itemId) {
-    return /*html*/`
+  getTemplate(listId) {
+    let template = /*html*/`
       <dd>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" name="checkbox" id="${this.id}" value="checkedValue"> ${this.itemName}
-        </label>
-      </div>
-      <button class="btn btn-primary"><h3><i class="far fa-trash-alt" onclick="app.listController.deleteItem('${itemId}','${this.id}')">T</i></h3></button>
-      </dd>
-    `
+      <div class="form-check form-check-inline">`
+    if (this.checkbox) {
+      template +=
+        `
+          <label class="form-check-label">
+            <input onclick="app.listController.toggleCheckbox()" class="form-check-input" type="checkbox" name="checkbox" id="${this.id}" checked> ${this.itemName}
+          </label>`
+    } else {
+      template +=
+        `
+            <label class="form-check-label">
+              <input onclick="app.listController.toggleCheckbox()" class="form-check-input" type="checkbox" name="checkbox" id="${this.id}"> ${this.itemName}
+            </label>`
+
+    }
+    template += `
+      </div >
+      <button class="btn btn-primary"><p><i class="far fa-trash-alt" onclick="app.listController.deleteItem('${listId}','${this.id}')"></i></p></button>
+      </dd >
+      `
+    return template
   }
 }

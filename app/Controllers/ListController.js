@@ -5,23 +5,12 @@ import _store from "../store.js"
 function _drawLists() {
   let template = ''
   let lists = _store.State.lists
-  let itemTemplate = ''
   let listId = ''
 
 
-  //lists.forEach(list => template += list.Template)
-  //NOTE Need to break this out into a for loop somehow to make the template for the items themselves display in each iteration.
-  for (let i = 0; i < lists.length; i++) {
-    let list = lists[i]
-    template += list.Template
-    for (let t = 0; t < list.items.length; t++) {
-      let item = list.items[i]
-      itemTemplate += item.getTemplate(item.id)
-    }
-    listId = list.id
-    document.getElementById("lists").innerHTML = template
-    document.getElementById(listId).innerHTML = itemTemplate
-  }
+  lists.forEach(list => template += list.Template)
+
+  document.getElementById("lists").innerHTML = template
 }
 
 //Public
@@ -66,8 +55,11 @@ export default class ListController {
     formData.reset()
   }
 
-  deleteItem(itemId, listId) {
-    _listService.deleteItem(itemId, listId)
-    _drawLists()
+  deleteItem(listId, itemId) {
+    let confirm = window.confirm("Delete this task?")
+    if (confirm) {
+      _listService.deleteItem(listId, itemId)
+      _drawLists()
+    }
   }
 }

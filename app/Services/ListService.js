@@ -21,17 +21,22 @@ class ListService {
 
   createItem(newItemData, listId) {
     let newItem = new Item(newItemData)
-    let item = _store.State.lists.find(list => list.id == listId)
-    item.items.push(newItem)
+    let foundList = _store.State.lists.find(list => list.id == listId)
+    foundList.items.push(newItem)
     console.log(_store.State.lists)
     _store.saveState()
   }
 
-  deleteItem(itemId, listId) {
-    let index = _store.State.lists.findIndex(list => list.id == listId)
-    console.log(index)
+  deleteItem(listId, itemId) {
+    let foundList = _store.State.lists.find(list => list.id == listId)
+
+    let index = foundList.items.findIndex(item => item.id == itemId)
+    console.log(index);
+    foundList.items.splice(index, 1)
     _store.saveState()
   }
+
+  //TODO items@ checkbox = !items.checkbox
 
   //TODO  Here is where we handle all of our business logic,
   //given the information you need in the controller,

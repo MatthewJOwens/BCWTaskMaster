@@ -12,7 +12,7 @@ export default class List {
     this.accentColor = data.accentColor || '#C2F0FC'
     //NOTE Does this need a Model? Probably. 
     /** @type {Item[]} */
-    this.items = []
+    this.items = data.items || []
     //NOTE How do I save checked items between visits?
   }
   //Be sure to add the methods needed to create the view template for this model
@@ -31,7 +31,7 @@ export default class List {
       </div>
     </form>
     <dl id="${this.id}">
-      ${this.items}
+      ${this.Items}
     </dl>
   </div>
   `
