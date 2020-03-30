@@ -19,7 +19,7 @@ export default class List {
   //For starting out, your tasks may be strings alone, but later you may wish to turn them into full objects, that will be up to you
   get Template() {
     return /*html*/ `
-      <div class="col-4 m-2 p-0 border border-light rounded shadow" style="background-color: ${this.secondaryColor}">
+      <div class="col-3 m-2 p-0 border border-light rounded shadow" style="background-color: ${this.secondaryColor}">
       <button type="button" class="close shadow" style="color: ${this.accentColor}" onclick="app.listController.deleteList('${this.id}')">
       <span>&times;</span>
       </button>
@@ -27,7 +27,7 @@ export default class List {
     <form onsubmit="app.listController.createItem(event, '${this.id}')">
       <div class="form-group">
         <input type="text" name="itemName" class="form-control" placeholder="Task">
-        <button type="submit" class="btn" style="background-color: ${this.accentColor}; color = ${this.secondaryColor}">+</button>
+        <button type="submit" class="btn" style="background-color: ${this.accentColor}; color = ${this.secondaryColor}"><i class="fas fa-plus-square"></i></button>
       </div>
     </form>
     <dl id="${this.id}">
