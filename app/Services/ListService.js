@@ -27,7 +27,9 @@ class ListService {
     _store.saveState()
   }
 
-  deleteItem(id) {
+  deleteItem(itemId, listId) {
+    let index = _store.State.lists.findIndex(list => list.id == listId)
+    console.log(index)
     _store.saveState()
   }
 

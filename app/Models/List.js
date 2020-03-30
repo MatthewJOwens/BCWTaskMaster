@@ -31,7 +31,7 @@ export default class List {
       </div>
     </form>
     <dl id="${this.id}">
-      
+      ${this.items}
     </dl>
   </div>
   `

@@ -59,8 +59,8 @@ export default class ListController {
     formData.reset()
   }
 
-  deleteItem(id) {
-    _listService.deleteItem(id)
+  deleteItem(itemId, listId) {
+    _listService.deleteItem(itemId, listId)
     _drawLists()
   }
 }

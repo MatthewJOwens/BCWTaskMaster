@@ -16,7 +16,7 @@ export default class Item {
           <input class="form-check-input" type="checkbox" name="checkbox" id="${this.id}" value="checkedValue"> ${this.itemName}
         </label>
       </div>
-      <h3><i class="far fa-trash-alt" onclick="app.listController.deleteItem('${itemId}','${this.id}')">T</i></h3>
+      <button class="btn btn-primary"><h3><i class="far fa-trash-alt" onclick="app.listController.deleteItem('${itemId}','${this.id}')">T</i></h3></button>
       </dd>
     `
   }
